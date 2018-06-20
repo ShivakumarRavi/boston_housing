@@ -12112,6 +12112,15 @@ The lower teacher-to-student ratio resulting in less attention dedicated to each
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>We only have five points here, and it may be hard to draw conclusion that is statistically significant.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Would you consider this model to have successfully captured the variation of the target variable? </li>
 <li>Why or why not?</li>
@@ -12213,6 +12222,11 @@ We consider this model has successfully captured the variance of the target vari
 <p><strong>Answer: </strong></p>
 <p>Splitting the dataset into some ratio of training and testing subset will increase the model efficency much better.</p>
 <p>Need to split the dataset with shuffled, to avoid the any bias in the dataset.</p>
+<ol>
+<li>UNDERFITTING: In this scenario, the model is not able to learn from the training (it is too simple) and hence it doesnot perform well on the test set (it wont perform well on train data as well).</li>
+<li>OVERFITTING: In this scenario, the model is over-complex and is trying to just memorize the train data, hence it doesnot generalize well on the test data.</li>
+<li>GOOD FIT: In this scenario, the model is neither too simple nor too complex, it is able to learn from the training data and hence it generalizes well to test data as well.</li>
+</ol>
 <p>If we use 20% of the data as training and remining as an test dataset, it will cause the model as underfitting. And, It we use 99% of the data as training and remaining as test dataset,It will cause model as overfitting. So we need to split the dataset into specific ratio like 80% of the dataset as traning and remining set as test set. As well as, we should not take any training dataset as an test dataset. If we take same dataset for training and testing it will lead to low training accuracy and make the dataset as overfitting.</p>
 
 </div>
@@ -13945,7 +13959,14 @@ Grid search means you have a set of models (which differ from each other in thei
 <p><strong>Answer: </strong>
 In the k-fold cross validation, dataset will split into k fold equal size.
 Each fold act like testing set one time and training set k-1 times. this is also called as cross validation performance.</p>
+<p>We donot apply k-fold on the whole dataset. Instead we first split our data into train and test and then apply k-fold on the train dataset. This is how cross-validation works. Now after this step we train our model on (k-1) folds and use 1 fold for cross-validation. This process is repeated k times, each time with a different cross-validation set. The average cross-validation score is used to check the performance of the model. Once you have selected the best parameters using gridSearch along with k-fold cross-validation, we will use the test set to check the final performance of the model.</p>
 <p>It does not work well when data is not uniformly distributed.</p>
+<p><strong>Benefits of k-fold cross-validation:</strong>
+More reliable estimate of out-of-sample performance than train/test split.
+Reduce the variance of a single trial of a train/test split.</p>
+<p>Hence, with the benefits of k-fold cross-validation, we're able to use the average testing accuracy as a benchmark to decide which is the most optimal set of parameters for the learning algorithm.</p>
+<p>If we do not use a cross-validation set and we run grid-search, we would have different sets of optimal parameters due to the fact that without a cross-validation set, the estimate of out-of-sample performance would have a high variance.</p>
+<p>In summary, without k-fold cross-validation the risk is higher that grid search will select hyper-parameter value combinations that perform very well on a specific train-test split but poorly otherwise.</p>
 
 </div>
 </div>
@@ -14183,6 +14204,23 @@ Predicted selling price for Client 3&#39;s home: $898,100.00
 <p><strong>Answer: </strong></p>
 <p>to find this values, we need to do set of pre-operations Minimum, Maximum, Mean, Median, Standard Deviation values.</p>
 <p>This seems reasonable given the low poverty level and student-to-teacher ratio with a high number of rooms.</p>
+<p>Answer:</p>
+<p><strong>Prices to recommend</strong></p>
+<p>Client 1: 444,900
+Client 2: 263,400
+Client 3: 898,100</p>
+<p><strong>Data Exploration Findings</strong></p>
+<p>Minimum price: $105,000.00</p>
+<p>Maximum price: $1,024,800.00</p>
+<p>Mean price: $454,342.94</p>
+<p>Median price: $438,900.00</p>
+<p>Standard deviation of prices: $165,340.28</p>
+<p><strong>Reasonableness</strong></p>
+<p>Compared to the data-exploration, it seems that the houses' prices from client 1 and client 2 are below the mean and median prices.</p>
+<p>For client 2, it seems reasonable due to the high poverty level and student-to-teacher ratio.</p>
+<p>For client 1, it also seems reasonable due to the average poverty level and student-to-teacher ratio.</p>
+<p>And the house's price from client 3 is way above the mean and median prices, nearing to the maximum price in the dataset.
+This seems reasonable given the low poverty level and student-to-teacher ratio with a high number of rooms.</p>
 
 </div>
 </div>
@@ -14264,6 +14302,7 @@ Range in prices: $73,357.39
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
 Data collected from a rural city may not be applicable as the demographics would change and other features may be better able to fit the dataset instead of a model with features that was learned using urban data.</p>
+<p><strong>Since the given dataset is should not be used in a real-world setting.</strong></p>
 
 </div>
 </div>
